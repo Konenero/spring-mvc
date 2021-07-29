@@ -17,7 +17,7 @@ public class CarsController {
     private CarsDAO carsDAO;
 
     @GetMapping("")
-    public String printCars(@RequestParam("count") int count, ModelMap model){
+    public String printCars(@RequestParam(name="count", defaultValue = "5", required = false) Integer count, ModelMap model) {
         model.addAttribute("countCars", carsDAO.getCars(count));
         return "cars";
     }
